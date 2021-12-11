@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700;800&family=Signika:wght@500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Info - get information</title>
+</head>
+
+<body>
+  <style>
+    .mt-3 {
+      color: black;
+    }
+
+    svg.text-indigo-500.w-6.h-6.flex-shrink-0.mr-4 {
+      color: black;
+    }
+
+    .fontlogo {
+      font-size: 45px;
+      padding-bottom: 10px;
+      color: black;
+    }
+
+    .far {
+      color: black;
+    }
+
+    .fas {
+      color: black;
+    }
+
+    .py-24 {
+      /* padding-top: 6rem; */
+      padding-bottom: 6rem;
+      padding-top: 0rem !important;
+    }
+
+    .forpad {
+      padding-top: 6rem !important;
+    }
+
+    .object-cover:hover {
+      scale: 1.1;
+    }
+
+    .bg-indigo-500 {
+      background-color: black;
+      border: 2px solid black;
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
+    }
+
+    .bg-indigo-500:hover {
+      color: black;
+      background-color: transparent;
+      border: 2px solid black;
+    }
+
+    .weatherhead {
+      height: 600px;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #ffffff85;
+    }
+
+    .head1 {
+      background-color: #ffffff85;
+      z-index: 11;
+    }
+
+    .result {
+      font-family: 'Poppins', sans-serif;
+      top: 60px;
+      display: -ms-grid;
+      display: grid;
+      margin: 0 auto;
+      position: relative;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: center;
+      -ms-flex-line-pack: space-evenly;
+      align-content: space-evenly;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      width: 100%;
+      text-align: left;
+      color: rgb(0, 0, 0);
+      margin-top: -20px;
+      padding-top: 50px;
+    }
+
+    .centerDiv>h2 {
+      font-weight: 700;
+      font-size: 25px;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    .centerDiv>p {
+      width: 60%;
+      text-align: center;
+      margin: 0 auto;
+      padding-bottom: 10px;
+    }
+
+    .centerDiv {
+      width: 100%;
+      padding: 50px;
+      margin: 0 auto;
+    }
+
+    .headflex {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+
+    .searchbutton {
+      padding: 2px;
+      color: white;
+      background-color: black;
+      border: 2px solid black;
+      border-radius: 5px;
+      margin: auto;
+      width: 80px;
+      margin-top: 10px;
+      margin-left: 40%;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+
+    .searchbutton:hover {
+      color: black;
+      background-color: white;
+      -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.66);
+      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.66);
+    }
+
+    #searchbox {
+      width: 350px;
+      height: 35px;
+      border-radius: 20px;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.33);
+      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.33);
+    }
+
+    #searchbox:focus {
+      outline: none;
+      -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.66);
+      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.66);
+    }
+
+    #searchbox:hover {
+      -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.66);
+      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.66);
+    }
+
+    input#searchbox[type=text]::-webkit-input-placeholder {
+      text-align: center;
+      padding-left: 20px;
+      color: #585858;
+    }
+
+    input#searchbox[type=text]:-ms-input-placeholder {
+      text-align: center;
+      padding-left: 20px;
+      color: #585858;
+    }
+
+    input#searchbox[type=text]::-ms-input-placeholder {
+      text-align: center;
+      padding-left: 20px;
+      color: #585858;
+    }
+
+    input#searchbox[type=text]::placeholder {
+      text-align: center;
+      padding-left: 20px;
+      color: #585858;
+    }
+
+    input#searchbox,
+    select,
+    textarea {
+      text-align: center;
+      color: black;
+    }
+
+    .result {
+      position: relative;
+    }
+
+    @media only screen and (max-width: 1350px) {
+      .result {
+        width: 100%;
+      }
+    }
+
+    @media only screen and (min-width: 720px) {
+      #searchbox {
+        width: 720px;
+      }
+
+      .searchbutton {
+        margin-left: 325px;
+      }
+    }
+
+    table {
+      padding-top: 20px;
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 80%;
+      border-spacing: 0;
+      border: 1px solid #ddd;
+      margin: 0 auto;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    .mytable {
+      padding-top: 20px;
+    }
+
+    /*# sourceMappingURL=main.css.map */
+  </style>
+  <div class="weatherhead">
+
+    <div class="head1">
+      {{>header}}
+    </div>
+
+    <script>
+      function show1() {
+        document.getElementById('id01').style.display = 'block';
+        document.getElementById('id02').style.display = 'none';
+
+      }
+    </script>
+    <div class="centerDiv">
+      <h2>License key validator</h2>
+      <p>The license key validator is a tool that allows you to validate license keys and view information about the
+        owner.</p>
+      <div class="headflex">
+        <div class="searchbar">
+          <form method="post" action="/find">
+          <input type="text" name="license" placeholder="Enter License Keys" id="searchbox"><br>
+          <button type="submit" class="searchbutton">Search
+          </button>
+          </form>
+        </div>
+      </div>
+      <div class="mytable" style="overflow-x: auto;">
+        <table>
+          <tr>
+            <th>NAME</th>
+            <th>PHONE NUMBER</th>
+            <th>LICENSE</th>
+            <th>TERMINAL ALLOWED</th>
+            <th>SMS LICENSE</th>
+            <th>SMS STATUS</th>
+            <th>SMS DEADLINE DATE</th>
+            <th>SMS COST</th>
+            <th>LICENSE COST</th>
+            <th>UID</th>
+            <th>ACTIVATION DATE</th>
+          </tr>
+          <tr>
+            <td>{{[0].name}}</td>
+            <td>{{[0].phonenumber}}</td>
+            <td>{{[0].license}}</td>
+            <td>{{[0].terminalallowed}}</td>
+            <td>{{[0].smslicense}}</td>
+            {{!-- <td style="display: block;">No Data Have</td> --}}
+            <td>{{[0].smsstatus}}</td>
+            <td>{{[0].smsdeadline}}</td>
+            <td>{{[0].smscost}}</td>
+            <td>{{[0].licensecost}}</td>
+            <td>{{[0].uid}}</td>
+            <td>{{[0].activationdate}}</td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700;800&family=Signika:wght@500&display=swap"
+    rel="stylesheet">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+
+</head>
+<style>
+  .above {
+    font-family: 'Poppins', sans-serif;
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
+    font-size: 50px;
+  }
+
+  .font-medium {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .dataEntry {
+    display: grid;
+    place-items: center;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .excelbutton {
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 2px;
+    color: white;
+    transition: all 0.3s;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .excelbutton:hover {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid black;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .settingsection {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding-top: 20px
+  }
+ .myinputBox {
+    padding: 5px;
+    background-color: rgb(247, 247, 247);
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid rgb(131, 131, 131);]
+    transition: all 0.3s;
+  }
+  .myinputBox:focus {
+    background-color: rgb(247, 247, 247);
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid rgb(99, 99, 99);
+  }
+ .myform{
+   display: flex;
+   place-items: center;
+ }
+</style>
+
+<script>
+  function openDiv(divname) {
+    var i;
+    var x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(divname).style.display = "block";
+  }
+</script>
+<div class="maincontainer" style="padding-top:20px">
+  <div class="above"><i class="fas fa-user"></i>
+    <p class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4"
+      style="font-family: 'Poppins', sans-serif;margin: 0 auto; text-align:center">ADMIN PANEL</p>
+
+  </div>
+  <div class="w3-bar w3-black" style="font-weight: 600;">
+    <button class="w3-bar-item w3-button" onclick="openDiv('dataEntry')">Data Entry</button>
+    <button class="w3-bar-item w3-button" onclick="openDiv('setting')">Settings</button>
+    <a href="/logout"><button class="w3-bar-item w3-button" style="float: right;padding-right:10px">LOGOUT</button></a>
+  </div>
+
+  <div id="dataEntry" style="padding-top:20px;font-family: 'Poppins', sans-serif;" class="w3-container city">
+    <div class="dataEntry">
+      <h2 style="font-family: 'Poppins', sans-serif;padding-bottom:10px; font-size:20px">Excel to MongoDB</h2>
+      <form action="/uploadfile" enctype="multipart/form-data" method="POST">
+        <input type="file" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' name="databaseFile">
+
+        <button type="submit" class="excelbutton">Submit Excel</button>
+      </form>
+            <strong style="letter-spacing: 0.6px;">NOTE: sheet name must be "Sheet1"</strong>
+
+    </div>
+  </div>
+
+  <div id="setting" class="w3-container city" style="font-family: 'Poppins', sans-serif;display:none">
+    <div class="settingsection">
+      <div style="padding-right: 15px;">
+        Change your password
+      </div>
+      <form class="myform" method="post" action="/passwordchange">
+        <label style="padding-right: 10px;padding-left: 10px;">New password</label>
+        <input type="password" class="myinputBox" name="newpassword" placeholder="Enter" required>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="margin-left: 5px;" type="submit">Change</button>
+      </form>
+    </div>
+
+    <div class="settingsection">
+      <div style="padding-right: 15px;">
+        Change your username
+      </div>
+      <form class="myform" method="post" action="/username">
+        <label style="padding-right: 10px;">New Username</label>
+        <input type="text" class="myinputBox" name="username" placeholder="username" required>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="margin-left: 5px;" type="submit">Change</button>
+      </form>
+    </div>
+
+  </div>
+ 
+</div>
